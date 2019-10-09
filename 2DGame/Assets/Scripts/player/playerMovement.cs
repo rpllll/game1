@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour {
 
 	public CharacterController controller;
 
-	public float runSpeed = 40f;
+	public float runSpeed = 1f;
 
 	float horizontalMove = 0f;
 	bool jump = false;
@@ -21,21 +21,12 @@ public class playerMovement : MonoBehaviour {
 		{
 			jump = true;
 		}
-
-		if (Input.GetButtonDown("Crouch"))
-		{
-			crouch = true;
-		} else if (Input.GetButtonUp("Crouch"))
-		{
-			crouch = false;
-		}
-
 	}
 
 	void FixedUpdate ()
 	{
 		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
 		jump = false;
 	}
 }
