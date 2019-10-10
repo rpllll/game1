@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class SceneController : MonoBehaviour
+public class sceneController : MonoBehaviour
 {
+	private int nextSceneToLoad;
+    private void Start()
+    {
+        nextSceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-		{
-			SceneManager.LoadScene("Scene 2");
-		}
+        {
+            SceneManager.LoadScene(nextSceneToLoad);
+        }
     }
-
 }
